@@ -13,4 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "CalculatorApplicaiton"
-include ':app'
+include(":app")
+include(":presentation")
+include(":data")
+include(":domain")
