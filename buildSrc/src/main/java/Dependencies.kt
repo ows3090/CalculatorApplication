@@ -4,6 +4,9 @@ object Versions{
     const val MATERIAL = "1.7.0"
     const val TIMBER = "5.0.1"
     const val DAGGER_HILT = "2.44"
+    const val ANDROID_VIEWMODEL_KTX = "2.5.1"
+    const val ANDROID_FRAGMENT_KTX = "1.5.5"
+    const val COROUTINE = "1.3.9"
 }
 
 object TestVersions{
@@ -19,6 +22,9 @@ object AppDependencies{
     const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
     const val DAGGER_HILT = "com.google.dagger:hilt-android:${Versions.DAGGER_HILT}"
     const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.DAGGER_HILT}"
+    const val ANDROID_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.ANDROID_VIEWMODEL_KTX}"
+    const val ANDROID_FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.ANDROID_FRAGMENT_KTX}"
+    const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}"
 }
 
 object TestDependencies{

@@ -43,12 +43,13 @@ dependencies {
     implementation(AppDependencies.ANDROIDX_CORE_KTX)
     implementation(AppDependencies.ANDROIDX_APPCOMPAT)
     implementation(AppDependencies.MATERIAL)
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation(TestDependencies.JUNIT)
     implementation(AppDependencies.DAGGER_HILT)
     kapt(AppDependencies.DAGGER_HILT_COMPILER)
+    implementation(AppDependencies.ANDROID_VIEWMODEL_KTX)
+    implementation(AppDependencies.ANDROID_FRAGMENT_KTX)
+    implementation(AppDependencies.COROUTINE)
+
+    testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(TestDependencies.ANDROIDX_TEST)
     androidTestImplementation(TestDependencies.ANDROIDX_ESPRESSO)
 }
