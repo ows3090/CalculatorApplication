@@ -48,6 +48,7 @@ dependencies {
     implementation(AppDependencies.ANDROID_VIEWMODEL_KTX)
     implementation(AppDependencies.ANDROID_FRAGMENT_KTX)
     implementation(AppDependencies.COROUTINE)
+    implementation(AppDependencies.TIMBER)
 
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(TestDependencies.ANDROIDX_TEST)

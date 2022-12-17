@@ -39,4 +39,9 @@ dependencies {
     implementation(project(":domain"))
     implementation(AppDependencies.DAGGER_HILT)
     kapt(AppDependencies.DAGGER_HILT_COMPILER)
+
+    implementation(AppDependencies.TIMBER)
+    implementation(AppDependencies.ANDROIDX_ROOM)
+    annotationProcessor(AppDependencies.ANDROIDX_ROOM_COMPILER)
+    kapt(AppDependencies.ANDROIDX_ROOM_COMPILER)
 }

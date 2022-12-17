@@ -7,6 +7,7 @@ object Versions{
     const val ANDROID_VIEWMODEL_KTX = "2.5.1"
     const val ANDROID_FRAGMENT_KTX = "1.5.5"
     const val COROUTINE = "1.3.9"
+    const val ANDROIDX_ROOM = "2.4.3"
 }
 
 object TestVersions{
@@ -25,6 +26,8 @@ object AppDependencies{
     const val ANDROID_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.ANDROID_VIEWMODEL_KTX}"
     const val ANDROID_FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.ANDROID_FRAGMENT_KTX}"
     const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}"
+    const val ANDROIDX_ROOM = "androidx.room:room-runtime:${Versions.ANDROIDX_ROOM}"
+    const val ANDROIDX_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ANDROIDX_ROOM}"
 }
 
 object TestDependencies{
