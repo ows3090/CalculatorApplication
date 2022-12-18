@@ -42,4 +42,8 @@ dependencies {
     implementation(AppDependencies.TIMBER)
     implementation(AppDependencies.DAGGER_HILT)
     kapt(AppDependencies.DAGGER_HILT_COMPILER)
+
+    implementation(AppDependencies.ANDROIDX_ROOM)
+    kapt(AppDependencies.ANDROIDX_ROOM_COMPILER)
+    implementation(AppDependencies.ANDROIDX_ROOM_KTX)
 }

@@ -3,6 +3,7 @@ package com.yapp.data.repository
 import com.yapp.data.mapper.toEntity
 import com.yapp.data.mapper.toModel
 import com.yapp.data.source.HistoryLocalDataSource
+import com.yapp.domain.di.IODispatcher
 import com.yapp.domain.model.CalculateHistory
 import com.yapp.domain.repository.HistoryRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -15,9 +16,9 @@ import javax.inject.Inject
 
 class HistoryRepositoryImpl @Inject constructor(
     private val historyLocalDataSource: HistoryLocalDataSource,
-    private val dispatcher: CoroutineDispatcher // TODO: Check Validation
+    @IODispatcher private val dispatcher: CoroutineDispatcher // TODO: Check Validation
 ): HistoryRepository {
-    override suspend fun getAll(): Flow<List<CalculateHistory>> =
+    override fun getAll(): Flow<List<CalculateHistory>> =
         historyLocalDataSource.getAll()
             .map { it.toModel() }
             .flowOn(dispatcher)

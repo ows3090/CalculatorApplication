@@ -42,6 +42,7 @@ dependencies {
 
     implementation(AppDependencies.TIMBER)
     implementation(AppDependencies.ANDROIDX_ROOM)
-    annotationProcessor(AppDependencies.ANDROIDX_ROOM_COMPILER)
     kapt(AppDependencies.ANDROIDX_ROOM_COMPILER)
+    implementation(AppDependencies.ANDROIDX_ROOM_KTX)
+    implementation(AppDependencies.GSON)
 }

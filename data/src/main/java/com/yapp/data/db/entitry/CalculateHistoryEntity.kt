@@ -10,5 +10,5 @@ data class CalculateHistoryEntity(
     val result: String = ""
 ){
     @PrimaryKey
-    val historyId: Long = 0L
+    var historyId: Long = 0L
 }

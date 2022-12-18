@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GetAllCalculatorHistoryUseCase @Inject constructor(
     private val historyRepository: HistoryRepository
 ) {
-    suspend operator fun invoke(): Flow<List<CalculateHistory>> =
+    operator fun invoke(): Flow<List<CalculateHistory>> =
         historyRepository.getAll()
 }

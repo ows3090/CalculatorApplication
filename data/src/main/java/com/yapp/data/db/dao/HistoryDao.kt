@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface HistoryDao {
     @Query("SELECT * FROM CalculateHistoryEntity")
-    suspend fun getAll(): Flow<List<CalculateHistoryEntity>>
+    fun getAll(): Flow<List<CalculateHistoryEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertHistory(entity: CalculateHistoryEntity)
