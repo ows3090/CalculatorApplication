@@ -20,25 +20,80 @@ class MainViewModel @Inject constructor(
     private val insertCalculateHistoryUseCase: InsertCalculatorHistoryUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _mainViewState = MutableStateFlow(MainViewState())
-    val mainViewState = _mainViewState.asStateFlow()
+    private val operands = mutableListOf<String>()
+    private val operators = mutableListOf<String>()
+    private var currentNum: String = ""
 
-    val historyState: StateFlow<List<CalculateHistory>> =
+    private val _sentenceState = MutableStateFlow("")
+    val setenceState = _sentenceState.asStateFlow()
+
+    private val _resultState = MutableStateFlow<MainResultState>(MainResultState.None)
+    val resultState = _resultState.asStateFlow()
+
+    val historyState: StateFlow<List<MainViewState>> =
         getAllCalculatorHistoryUseCase()
             .distinctUntilChanged()
+            .map { list ->
+                list.map { MainViewState(it.operands, it.operators, it.result) }
+            }
             .debounce(50)
             .stateIn(viewModelScope, SharingStarted.Eagerly, listOf())
 
 
     fun clickCalculator(isOperator: Boolean, value: String) {
-        _mainViewState.value = MainViewState(
-            operands = _mainViewState.value.operands + if (isOperator) listOf() else listOf(value),
-            operators = _mainViewState.value.operators + if (isOperator) listOf(value) else listOf(),
-            result = _mainViewState.value.result
-        )
+        if (isOperator) {
+            operands.add(currentNum)
+            operators.add(value)
+            currentNum = ""
+            _sentenceState.value += " $value "
+        } else {
+            currentNum += value
+            _sentenceState.value += value
+        }
     }
 
-    fun clickResult(){
+    fun clickResult() {
+        operands.add(currentNum)
+        operators.add(0, "+")
+        currentNum = ""
+
+        if (operands.size == operators.size) {
+            val result = operands.foldIndexed(0) { index, acc, s ->
+                when (operators[index]) {
+                    "+" -> acc + s.toInt()
+                    "-" -> acc - s.toInt()
+                    else -> acc * s.toInt()
+                }
+            }
+            _resultState.value = MainResultState.Success(
+                MainViewState(
+                    operands,
+                    operators,
+                    result.toString()
+                )
+            )
+
+            viewModelScope.launch {
+                insertCalculateHistoryUseCase(
+                    CalculateHistory(
+                        operands,
+                        operators,
+                        result.toString()
+                    )
+                )
+            }
+        } else {
+            _resultState.value = MainResultState.Error("계산 안됨")
+        }
 
     }
+
+    fun clickCancel() {
+        operands.clear()
+        operators.clear()
+        currentNum = ""
+        _resultState.value = MainResultState.None
+        _sentenceState.value = ""
+    }
+
 }

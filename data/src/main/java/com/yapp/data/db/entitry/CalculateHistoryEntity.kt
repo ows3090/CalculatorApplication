@@ -9,6 +9,6 @@ data class CalculateHistoryEntity(
     val operators: List<String> = listOf(),
     val result: String = ""
 ){
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var historyId: Long = 0L
 }
